@@ -2,77 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* Налаштування фону та центрування */
         body {
             margin: 0;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: transparent; /* Прозорий для Notion */
+            background: transparent;
             font-family: 'Inter', -apple-system, system-ui, sans-serif;
+            /* Цей рядок прибирає чорні смуги прокрутки */
+            overflow: hidden; 
         }
 
-        /* Стиль самої картки віджета */
         .widget {
-            background-color: #f8f5f0; /* Ніжний бежевий фон як на фото */
-            padding: 30px 45px;
-            border-radius: 28px; /* Дуже м'які закруглені кути */
+            background-color: #f8f5f0; /* Ваш бежевий фон */
+            /* Трохи менші відступи, щоб влізало в малі блоки */
+            padding: 20px; 
+            border-radius: 24px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03); /* Ледь помітна тінь */
-            min-width: 180px;
+            min-width: 120px;
+            /* Гарантує, що контент не вийде за межі */
+            box-sizing: border-box; 
         }
 
-        /* Стиль назви дня тижня */
         #day {
-            font-size: 14px;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: #a19d97; /* Мутний сірий колір */
-            margin-bottom: 8px;
+            letter-spacing: 0.15em;
+            color: #a19d97;
+            margin-bottom: 4px;
             font-weight: 500;
         }
 
-        /* Стиль основної дати */
         #date {
-            font-size: 34px;
+            font-size: 24px;
             font-weight: 700;
-            color: #33312e; /* Глибокий антрацитовий */
+            color: #33312e;
             line-height: 1.1;
-            /* Використання засічок, якщо хочете точну копію */
-            font-family: 'Charter', 'Georgia', serif; 
+            font-family: 'Charter', 'Georgia', serif;
         }
     </style>
 </head>
 <body>
 
     <div class="widget">
-        <div id="day">Sunday</div>
-        <div id="date">April 26</div>
+        <div id="day"></div>
+        <div id="date"></div>
     </div>
 
     <script>
         function updateWidget() {
             const now = new Date();
-            
-            // Налаштування мови та формату
             const dayOptions = { weekday: 'long' };
             const dateOptions = { month: 'long', day: 'numeric' };
 
-            // Отримання даних (en-US для англійського стилю як на референсі)
-            const dayName = now.toLocaleDateString('en-US', dayOptions);
-            const dateText = now.toLocaleDateString('en-US', dateOptions);
-
-            // Виведення в HTML
-            document.getElementById('day').innerText = dayName;
-            document.getElementById('date').innerText = dateText;
+            document.getElementById('day').innerText = now.toLocaleDateString('en-US', dayOptions);
+            document.getElementById('date').innerText = now.toLocaleDateString('en-US', dateOptions);
         }
-
-        // Запуск при завантаженні
         updateWidget();
-        // Оновлення кожну годину
         setInterval(updateWidget, 3600000);
     </script>
 </body>
