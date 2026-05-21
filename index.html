@@ -7,114 +7,129 @@
 
   <style>
     :root {
-      --cream: #fbf7ef;
-      --cream-light: #fffdf8;
-      --sage: #6f8064;
-      --charcoal: #2f3030;
-      --border: rgba(132, 143, 118, 0.16);
-      --shadow: rgba(74, 68, 61, 0.03);
-    }
+  --cream: #fbf7ef;
+  --cream-light: #fffdf8;
+  --sage: #6f8064;
+  --charcoal: #2f3030;
+  --border: rgba(132, 143, 118, 0.13);
+  --shadow: rgba(74, 68, 61, 0.028);
+}
 
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: transparent;
-      overflow: hidden;
-      font-family: Georgia, "Times New Roman", serif;
-    }
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
 
-    .date-widget {
-      width: 390px;
-      height: 125px;
-      position: relative;
-      overflow: visible;
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-      border-radius: 24px;
-      border: 1px solid var(--border);
+  /* важливо: дає повітря, щоб краї картки не обрізались */
+  padding: 18px 22px;
 
-      background:
-        radial-gradient(circle at 35% 20%, rgba(255, 255, 255, 0.75), transparent 42%),
-        linear-gradient(135deg, var(--cream-light) 0%, var(--cream) 100%);
+  background: transparent;
+  overflow: visible;
+  font-family: Georgia, "Times New Roman", serif;
+}
 
-      box-shadow:
-        0 3px 10px var(--shadow),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.35);
+.date-widget {
+  width: min(370px, calc(100vw - 44px));
+  height: 118px;
+  position: relative;
+  overflow: hidden;
 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+  border-radius: 24px;
+  border: 1px solid var(--border);
 
-      padding: 18px 46px 18px 34px;
-    }
+  background:
+    radial-gradient(circle at 34% 18%, rgba(255, 255, 255, 0.82), transparent 42%),
+    linear-gradient(135deg, var(--cream-light) 0%, var(--cream) 100%);
 
-    .weekday {
-      margin: 0 0 5px;
+  box-shadow:
+    0 2px 8px var(--shadow),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.35);
 
-      font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-      font-size: 16px;
-      line-height: 1;
-      letter-spacing: 0.30em;
-      text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-      color: var(--sage);
-      font-weight: 700;
-    }
+  /* більше місця справа під гілочку */
+  padding: 16px 72px 16px 34px;
+}
 
-    .date {
-      margin: 0;
+.weekday {
+  margin: 0 0 5px;
 
-      font-size: 43px;
-      line-height: 0.95;
-      letter-spacing: -0.035em;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
 
-      color: var(--charcoal);
-      font-weight: 500;
-    }
+  color: var(--sage);
+  font-weight: 700;
+}
 
-    .botanical-img {
-      position: absolute;
-      right: 18px;
-      bottom: 9px;
+.date {
+  margin: 0;
 
-      width: 68px;
-      height: auto;
+  font-size: 40px;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
 
-      opacity: 0.9;
-      pointer-events: none;
-      user-select: none;
-    }
+  color: var(--charcoal);
+  font-weight: 500;
+}
 
-    @media (max-width: 520px) {
-      .date-widget {
-        width: 92vw;
-        height: 122px;
-        border-radius: 24px;
-        padding: 16px 44px 16px 28px;
-      }
+.botanical-img {
+  position: absolute;
+  right: 22px;
+  bottom: 12px;
 
-      .weekday {
-        font-size: 14px;
-        letter-spacing: 0.26em;
-      }
+  width: 58px;
+  height: auto;
 
-      .date {
-        font-size: 38px;
-      }
+  opacity: 0.92;
+  pointer-events: none;
+  user-select: none;
+}
 
-      .botanical-img {
-        width: 58px;
-        right: 14px;
-        bottom: 8px;
-      }
-    }
+@media (max-width: 520px) {
+  body {
+    padding: 16px;
+  }
+
+  .date-widget {
+    width: min(350px, calc(100vw - 32px));
+    height: 112px;
+    border-radius: 22px;
+    padding: 15px 64px 15px 28px;
+  }
+
+  .weekday {
+    font-size: 13px;
+    letter-spacing: 0.26em;
+  }
+
+  .date {
+    font-size: 36px;
+  }
+
+  .botanical-img {
+    width: 52px;
+    right: 18px;
+    bottom: 10px;
+  }
+}
   </style>
 </head>
 
